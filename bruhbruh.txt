@@ -1,0 +1,37 @@
+ ArrayList<Question> question = new ArrayList<Question>();
+        question.add(new Question("What is 3 x 2?", 6));
+        question.add(new Question("What is 10 + 3?", 13));
+        question.add(new Question("What is 7 + 4?", 11));
+        question.add(new Question("What is 28 divided by 2?", 14));
+        question.add(new Question("What is 2 - 6?", -4));
+        question.add(new Question("What is 1 + 1?", 2));
+        question.add(new Question("What is 1 x 11?", 11));
+        question.add(new Question("What is 4 x 3?", 12));
+        question.add(new Question("What is -7 x 1?", -7));
+        question.add(new Question("What is 5 x 2?", 10));
+        for (int i = 0; i < question.size(); i++) {
+            if (question.get(i) == null) {
+                break;
+            }
+            try {
+                int answer = Integer.parseInt(JOptionPane.showInputDialog(question.get(i).question));
+                question.get(i).CheckAnswer(answer);
+                if (answer == question.get(i).answer) {
+                    point += 1;
+                }
+            }
+                catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "You don't return anything.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            count++;
+        }
+        if (point >= 5) {
+            String[] responses = {"Thanks", "I'm still sad. :(", "Asuka-chan!"};
+            ImageIcon smile = new ImageIcon("shinjiikarismile.png");
+            JOptionPane.showOptionDialog(null, "You are always awesome", "Shinji's smile", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, smile, responses, 0);
+        } else {
+            String[] responses = {"Bruh", "AAAAHHHHH!", "#$^#&^$&$"};
+            ImageIcon smile = new ImageIcon("shinjiscream.jpg");
+            JOptionPane.showOptionDialog(null, "You SUCK AT MATH!!", "Shinji Screaming", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, smile, responses, 0);
+        }
+        JOptionPane.showMessageDialog(null, "Score: " + point + "/" + count, "Result", JOptionPane.PLAIN_MESSAGE);
